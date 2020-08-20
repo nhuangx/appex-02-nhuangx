@@ -2,7 +2,7 @@
 title: "AE 02"
 subtitle: "Flint Water Crisis"
 date: "Due: August 21, 11:59PM"
-author: "YOUR NAME GOES HERE"
+author: "nhuangx"
 output: 
   html_document: 
     toc: TRUE
@@ -62,8 +62,8 @@ Fill in the code to see how many samples samples were taken from each zip code.
 Uncomment the lines (i.e. remove the `#` before running the code)
 
 ```{r count-by-zip, echo = TRUE}
-# flint %>% 
- # count(______)
+flint %>% 
+ count(zip)
 ```
 
 Which ZIP code had the most samples drawn?
