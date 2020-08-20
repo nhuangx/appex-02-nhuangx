@@ -45,7 +45,7 @@ Let's preview the data with the `glimpse()` function:
 glimpse(flint)
 ```
 
-There are ______ samples in the data set. 
+There are 4065 samples in the data set. 
 
 ## Analysis
 
@@ -68,11 +68,15 @@ flint %>%
 
 Which ZIP code had the most samples drawn?
 
+ZIP code 48503 had the most samples drawn.
+
 ### Part 2
 
 Next, let's look at the mean and median lead contaminant values for each zip 
 code and draw combination. We have eight zip codes and samples taken at three 
 times. How many combinations do we have?
+
+24 combinations
 
 ```{r mean-ppb-by-zip-draw, echo = TRUE}
 flint %>% 
@@ -88,6 +92,8 @@ flint %>%
 
 How many rows are in each of two above data frames?
 
+24 rows
+
 ### Part 3
 
 Modify the code below to compute the mean and median lead contaminant values for 
@@ -96,7 +102,7 @@ Don’t forget to uncomment the second line of code.
 
 ```{r, echo = TRUE}
 flint %>% 
-  # filter(zip == 48503, draw == "_____") %>% 
+  filter(zip == 48503, draw == "first") %>% 
   summarise(mean_pb = mean(lead),
             median_pb = median(lead))
 ```
@@ -119,7 +125,7 @@ five zip codes we considered. Add `x` and `y` labels; add a title by inserting
 ```{r}
 ggplot(data = flint_focus, aes(x = factor(zip), y = lead)) +
   geom_boxplot(aes(fill = factor(draw))) +
-  labs(x = "--------", y = "--------", fill = "Flushing time") +
+  labs(title = "Flushing Times", x = "Zip Code", y = "Time (sec)", fill = "Flushing time") +
   scale_fill_discrete(breaks = c("first", "second", "third"),
                       labels = c("0 (sec)", "45 (sec)", "120 (sec)")) +
   coord_flip() +
@@ -132,8 +138,8 @@ the corresponding plot.
 ```{r}
 ggplot(data = flint_focus, aes(x = factor(zip), y = lead)) +
   geom_boxplot(aes(fill = factor(draw))) + 
-  labs(x = "--------", y = "--------", fill = "Flushing time",
-       subtitle = "--------") +
+  labs(title = "Flushing Times", x = "ZIP Code", y = "Time", fill = "Flushing time",
+       subtitle = "Assorted ZIP Codes") +
   scale_fill_discrete(breaks = c("first", "second", "third"),
                       labels = c("0 (sec)", "45 (sec)", "120 (sec)")) +
   coord_flip(ylim = c(0, 50)) +
@@ -142,6 +148,13 @@ ggplot(data = flint_focus, aes(x = factor(zip), y = lead)) +
 
 What is the difference between the two plots? What are the advantages and 
 disadvantages to each plot? 
+
+The first plot showed all data points for flushing times, while the second plot
+didn't, omitting some outliers. The advantages of the first plot was that all 
+outliers were viewable, giving a more accurate portrayal of the data. The
+disadvantage of the first plot was that the box plot was a lot harder to view,
+which would obscur some of the trends that might be more clearly seen in box
+plot #2.
 
 ## Submitting application exercises 
 

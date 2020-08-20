@@ -1628,7 +1628,7 @@ div.tocify {
 <h3>Part 3</h3>
 <p>Modify the code below to compute the mean and median lead contaminant values for zip code 48503 at the first draw. What should you put in for <code>draw == &quot;_____&quot;</code>? Don’t forget to uncomment the second line of code.</p>
 <pre class="r"><code>flint %&gt;% 
-  filter(zip == 48503, draw == &quot;mean_pb, median_pb&quot;) %&gt;% 
+  filter(zip == 48503, draw == &quot;1&quot;) %&gt;% 
   summarise(mean_pb = mean(lead),
             median_pb = median(lead))</code></pre>
 <pre><code>## # A tibble: 1 x 2
